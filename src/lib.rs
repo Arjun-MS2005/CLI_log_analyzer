@@ -1,4 +1,14 @@
 use::std::collections::HashMap;
+use::clap::{ValueEnum};
+
+#[derive(ValueEnum, Clone, Debug)]
+#[clap(rename_all = "lower")]
+pub enum Level {
+    Info,
+    Warn,
+    Error,
+    Debug,
+}
 
 pub fn analyze_logs<'a>(contents: &'a str) -> HashMap<&'a str, u32> {
     let mut log_hash: HashMap<&'a str, u32> = HashMap::new();
