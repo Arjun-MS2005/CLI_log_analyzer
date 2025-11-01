@@ -6,16 +6,12 @@ use std::path::Path;
 use log_analyzer::analyze_logs;
 
 
-fn main() {
+fn main() -> Result<() , Box<dyn Error>> {
     let args: Vec<String> = env::args().collect();
-    let file_path = build_file_path(&args).unwrap_or_else(|error_message|{
-        println!("error occured while building file path: {error_message}");
-        process::exit(1);
-    });
-    if let Err(e) = run(file_path){
-        println!("Application Error: {e}");
-        process::exit(1);
-    };
+    let file_path = build_file_path(&args)?;
+    run(file_path)?;
+
+    Ok(())
 }
 
 fn build_file_path(args: &[String]) -> Result<String , &'static str>{
