@@ -1,30 +1,21 @@
 use std::error::Error;
 use std::fs;
-use std::env;
-use std::process;
-use std::path::Path;
 use log_analyzer::analyze_logs;
+use clap::Parser;
+
+#[derive(Parser, Debug)]
+#[command(version, about, long_about = None)]
+struct Args{
+    file_path: String,
+}
 
 
 fn main() -> Result<() , Box<dyn Error>> {
-    let args: Vec<String> = env::args().collect();
-    let file_path = build_file_path(&args)?;
+    let args = Args::parse();
+    let file_path = args.file_path;
     run(file_path)?;
 
     Ok(())
-}
-
-fn build_file_path(args: &[String]) -> Result<String , &'static str>{
-    if args.len() < 2{
-        return Err("Missing File Path...");
-    }
-
-    let file_path = args[1].clone();
-    let path = Path::new(&file_path);
-    if !path.exists(){
-        return Err("File path Does not exist");
-    }
-    return Ok(file_path);
 }
 
 
