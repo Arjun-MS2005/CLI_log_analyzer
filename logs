@@ -1,0 +1,12 @@
+[2025-11-01 15:58:01] [INFO] - Application starting up...
+[2025-11-01 15:58:02] [INFO] - Configuration file loaded successfully from /etc/app/config.toml
+[2025-11-01 15:58:03] [DEBUG] - Checking database connection pool.
+[2025-11-01 15:58:05] [WARN] - Connection to metrics server is slow. Response time: 1200ms
+[2025-11-01 15:58:06] [INFO] - User 'alex' successfully authenticated.
+[2025-11-01 15:58:09] [ERROR] - Failed to connect to database: Authentication failed for user 'root'.
+[2025-11-01 15:58:10] [INFO] - Request received: GET /api/v1/users
+[2025-11-01 15:58:12] [WARN] - API endpoint GET /api/v1/users is deprecated. Please use GET /api/v2/users.
+[2025-11-01 15:58:15] [DEBUG] - Cache lookup for user 'alex'.
+[2025-11-01 15:58:18] [ERROR] - Critical error: Out of memory while processing request.
+[2025-11-01 15:58:20] [ERROR] - Failed to write to disk: Permission denied on /var/log/app/audit.log
+[2025-11-01 15:58:21] [INFO] - Shutting down application.
